@@ -14,6 +14,12 @@ jobs:
     # Checkout code
     - name: Checkout repository
       uses: actions/checkout@v3
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu' # or adopt, temurin
+        java-version: '17'
 
     # Setup Flutter
     - name: Setup Flutter
