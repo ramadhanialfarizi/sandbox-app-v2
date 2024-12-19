@@ -47,6 +47,14 @@ jobs:
       if: runner.os == 'macOS' # Required for iOS builds
       run: flutter build ipa --release
 
+    # Install firebase cli
+    - name: Install Firebase CLI
+      run: |
+        curl -sL https://firebase.tools | bash
+    
+    - name: Verify Firebase CLI Installation
+      run: firebase --version
+
     # Upload to Firebase App Distribution for Android
     - name: Deploy Android APK to Firebase
       env:
