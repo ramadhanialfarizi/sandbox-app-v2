@@ -20,6 +20,12 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: 'stable'
+    
+    - name: Check Flutter version
+      run: flutter --version
+    
+    - name: Clear Flutter cache
+      run: flutter clean && flutter pub cache repair
 
     # Install dependencies
     - name: Install dependencies
