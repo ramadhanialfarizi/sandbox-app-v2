@@ -67,6 +67,10 @@ jobs:
         else
           echo "FIREBASE_AUTH_TOKEN is set."
         fi
+    
+    # Authenticate Firebase using the token
+    - name: Authenticate Firebase with Firebase Token
+      run: firebase login:ci --token ${{ secrets.FIREBASE_AUTH_TOKEN }}
 
     # Upload to Firebase App Distribution for Android
     - name: Deploy Android APK to Firebase
