@@ -67,15 +67,9 @@ jobs:
         else
           echo "FIREBASE_AUTH_TOKEN is set."
         fi
-    
-    # Authenticate Firebase using the token
-    # - name: Authenticate Firebase with Firebase Token
-    #   run: firebase login:ci --token ${{ secrets.FIREBASE_AUTH_TOKEN }}
 
     # Upload to Firebase App Distribution for Android
     - name: Deploy Android APK to Firebase
-      # env:
-      #   FIREBASE_AUTH_TOKEN: ${{ secrets.FIREBASE_AUTH_TOKEN }}
       run: |
         firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
           --app "1:479050584699:android:1a9ebed1e44a4098ecc8de" \
@@ -84,8 +78,6 @@ jobs:
     # Upload to Firebase App Distribution for iOS
     - name: Deploy iOS IPA to Firebase
       if: runner.os == 'macOS' # Required for iOS builds
-      # env:
-      #   FIREBASE_AUTH_TOKEN: ${{ secrets.FIREBASE_AUTH_TOKEN }}
       run: |
         firebase appdistribution:distribute build/ios/ipa/Runner.ipa \
           --app "1:479050584699:ios:5e84af163756c012ecc8de" \
