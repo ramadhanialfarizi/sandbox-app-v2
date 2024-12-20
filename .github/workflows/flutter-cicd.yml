@@ -53,8 +53,16 @@ jobs:
       run: |
         curl -sL https://firebase.tools | bash
     
+    # check firebase CLI version 
     - name: Verify Firebase CLI Installation
       run: firebase --version
+
+    # login firebase
+    - name: Authenticate Firebase CLI
+      env:
+        FIREBASE_AUTH_TOKEN: ${{ secrets.FIREBASE_AUTH_TOKEN }}
+      run: |
+        firebase login:ci --token $FIREBASE_AUTH_TOKEN
 
     # Upload to Firebase App Distribution for Android
     - name: Deploy Android APK to Firebase
