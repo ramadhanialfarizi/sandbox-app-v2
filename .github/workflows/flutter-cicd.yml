@@ -61,7 +61,7 @@ jobs:
     # verified firebase token
     - name: Verify Firebase Token Presence
       run: |
-        if [ -z "$FIREBASE_AUTH_TOKEN" ]; then
+        if [ -z "$secrets.FIREBASE_AUTH_TOKEN" ]; then
           echo "FIREBASE_AUTH_TOKEN is not set!"
           exit 1
         else
