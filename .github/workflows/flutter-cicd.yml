@@ -57,6 +57,16 @@ jobs:
     # check firebase CLI version 
     - name: Verify Firebase CLI Installation
       run: firebase --version
+    
+    # verified firebase token
+    - name: Verify Firebase Token Presence
+      run: |
+        if [ -z "$FIREBASE_AUTH_TOKEN" ]; then
+          echo "FIREBASE_AUTH_TOKEN is not set!"
+          exit 1
+        else
+          echo "FIREBASE_AUTH_TOKEN is set."
+        fi
 
     # Upload to Firebase App Distribution for Android
     - name: Deploy Android APK to Firebase
